@@ -28,7 +28,13 @@ public class StudentEntity {
     private Integer age;
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     private List<EnrollmentEntity> enrollments = new ArrayList<>();
+    @Column(nullable = false,updatable = false)
     private LocalDateTime createdAt;
+
+    @PrePersist
+    protected void onCreate(){
+        createdAt =LocalDateTime.now();
+    }
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
