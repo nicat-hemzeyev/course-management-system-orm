@@ -21,7 +21,7 @@ public class TeacherMapper {
                 .email(teacherEntity.getEmail())
                 .specialization(teacherEntity.getSpecialization())
                 .createdAt(teacherEntity.getCreatedAt())
-                .course(teacherEntity.getCourse())
+               // .course(teacherEntity.getCourse())
                 .build();
     }
 }

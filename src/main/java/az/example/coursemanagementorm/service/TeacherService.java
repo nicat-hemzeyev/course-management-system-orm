@@ -5,6 +5,7 @@ import az.example.coursemanagementorm.dao.repository.TeacherRepository;
 import az.example.coursemanagementorm.mapper.TeacherMapper;
 import az.example.coursemanagementorm.model.request.TeacherRequest;
 import az.example.coursemanagementorm.model.response.TeacherResponse;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -53,7 +54,9 @@ public class TeacherService {
         return TeacherMapper.mapToResponse(updated);
     }
 
+    @Transactional
     public void deleteTeacher(Long id){
         teacherRepository.deleteById(id);
     }
+
 }

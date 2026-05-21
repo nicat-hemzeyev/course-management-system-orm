@@ -5,6 +5,8 @@ import lombok.*;
 
 import java.time.LocalDate;
 
+import static az.example.coursemanagementorm.dao.entity.EnrollmentStatus.ACTIVE;
+
 @Entity
 @Table(name = "enrollments")
 @AllArgsConstructor
@@ -24,7 +26,7 @@ public class EnrollmentEntity {
     private CourseEntity course;//course
     private LocalDate enrolledAt; //sadece tarix
     @Enumerated(EnumType.STRING)
-    private EnrollmentStatus status;
+    private EnrollmentStatus status=ACTIVE;
 @PrePersist
     protected void onCreate(){
     enrolledAt=LocalDate.now();

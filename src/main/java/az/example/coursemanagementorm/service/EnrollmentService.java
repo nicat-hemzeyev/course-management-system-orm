@@ -6,6 +6,7 @@ import az.example.coursemanagementorm.dao.entity.StudentEntity;
 import az.example.coursemanagementorm.dao.repository.CourseRepository;
 import az.example.coursemanagementorm.dao.repository.EnrollmentRepository;
 import az.example.coursemanagementorm.dao.repository.StudentRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,7 @@ public class EnrollmentService {
         enrollmentRepository.save(enrollmentEntity);
     }
 
+    @Transactional
     public void unenrollStudentFromCourse(Long studentId, Long courseId) {
         if (!enrollmentRepository.existsByStudent_IdAndCourse_Id(studentId, courseId)) {
             throw new RuntimeException("Enrollment not found");

@@ -11,6 +11,7 @@ import az.example.coursemanagementorm.dao.repository.TeacherRepository;
 import az.example.coursemanagementorm.mapper.CourseMapper;
 import az.example.coursemanagementorm.model.request.CourseRequest;
 import az.example.coursemanagementorm.model.response.CourseResponse;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -76,6 +77,7 @@ public class CourseService {
         return CourseMapper.mapToResponse(updated);
     }
 
+    @Transactional
     public void deleteCourse(Long id) {
         courseRepository.deleteById(id);
     }

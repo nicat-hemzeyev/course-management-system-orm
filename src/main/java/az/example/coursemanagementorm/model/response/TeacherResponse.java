@@ -19,6 +19,6 @@ public class TeacherResponse {
     private String email;
     private String specialization;
     private LocalDateTime createdAt;
-    private List<CourseEntity> course = new ArrayList<>();
+  //  private List<CourseEntity> course = new ArrayList<>();
 
 }

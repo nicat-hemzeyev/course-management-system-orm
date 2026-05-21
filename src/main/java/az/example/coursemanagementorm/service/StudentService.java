@@ -5,6 +5,7 @@ import az.example.coursemanagementorm.dao.repository.StudentRepository;
 import az.example.coursemanagementorm.mapper.StudentMapper;
 import az.example.coursemanagementorm.model.request.StudentRequest;
 import az.example.coursemanagementorm.model.response.StudentResponse;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +55,7 @@ public class StudentService {
         return StudentMapper.mapToResponse(updated);
     }
 
+    @Transactional
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
     }
