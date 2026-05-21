@@ -18,8 +18,15 @@ public class StudentService {
     public StudentResponse createStudent(StudentRequest studentRequest) {
         StudentEntity studentEntity = StudentMapper.mapToEntity(studentRequest);
         StudentEntity student = studentRepository.save(studentEntity);
-        StudentResponse studentResponse = StudentMapper.mapToResponse(student);
-        return studentResponse;
+        return StudentMapper.mapToResponse(student);
+
+    }
+
+    public List<StudentResponse> getAllStudents() {
+        return studentRepository.findAll()
+                .stream()
+                .map(StudentMapper::mapToResponse)
+                .toList();
     }
 
     public StudentResponse getStudentById(Long id) {
@@ -35,14 +42,7 @@ public class StudentService {
                 .toList();
     }
 
-//    public StudentResponse updateStudent(Long id, StudentRequest studentRequest) {
-//        StudentEntity studentEntity = StudentMapper.mapToEntity(studentRequest);
-//        return studentRepository.updateStudent(id, studentEntity)
-//                .map(StudentMapper::mapToResponse)
-//                .orElseThrow(() -> new RuntimeException("not found id: " + id));
-//    }
-
-    public StudentResponse updateStudent(Long id, StudentRequest studentRequest) {
+    public StudentResponse updateStudent(Long id, StudentRequest studentRequest)    {
         StudentEntity student = studentRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("not found id: " + id));
 
@@ -54,20 +54,7 @@ public class StudentService {
         return StudentMapper.mapToResponse(updated);
     }
 
-    public List<StudentResponse> getAllStudents() {
-        return studentRepository.findAll()
-                .stream()
-                .map(StudentMapper::mapToResponse)
-                .toList();
-    }
-
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
     }
-
-//    public void enrollStudentToCourse(Long studentId, Long courseId) {
-//    }
-//
-//    public void unenrollStudentFromCourse(Long studentId, Long courseId) {
-//    }
 }

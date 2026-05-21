@@ -6,7 +6,7 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "enroolments")
+@Table(name = "enrollments")
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -25,5 +25,8 @@ public class EnrollmentEntity {
     private LocalDate enrolledAt; //sadece tarix
     @Enumerated(EnumType.STRING)
     private EnrollmentStatus status;
-
+@PrePersist
+    protected void onCreate(){
+    enrolledAt=LocalDate.now();
+}
 }

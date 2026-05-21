@@ -29,4 +29,9 @@ public class CourseEntity {
     @OneToMany(mappedBy = "course")
     private List<EnrollmentEntity> enrollment = new ArrayList<>();
     private LocalDateTime createdAt; // hem tarix hem saat saxlayir
+
+    @PrePersist
+    protected void onCreate(){
+        createdAt=LocalDateTime.now();
+    }
 }

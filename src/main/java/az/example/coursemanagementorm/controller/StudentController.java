@@ -21,31 +21,29 @@ public class StudentController {
         return studentService.createStudent(studentRequest);
     }
 
-    @PutMapping("/{id}")
-    public StudentResponse updateStudent(@PathVariable Long id,
-                                         @RequestBody StudentRequest studentRequest){
-        return studentService.updateStudent(id,studentRequest);
+    @GetMapping
+    public List<StudentResponse> getAllStudents() {
+        return studentService.getAllStudents();
     }
+
     @GetMapping("/{id}")
     public StudentResponse getStudentById(@PathVariable Long id){
         return studentService.getStudentById(id);
     }
+
     @GetMapping("/{name}")
     public List<StudentResponse> getStudentsByName(@PathVariable String name){
         return studentService.getStudentByName(name);
     }
 
-    @GetMapping
-    public List<StudentResponse> getAllStudents() {
-        return studentService.getAllStudents();
+    @PutMapping("/{id}")
+    public StudentResponse updateStudent(@PathVariable Long id,
+                                         @RequestBody StudentRequest studentRequest) {
+        return studentService.updateStudent(id, studentRequest);
     }
 
     @DeleteMapping("/{id}")
     public void deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
     }
-
-//@PostMapping("/students/{id}/enroll/{courseId}") → enrollStudentToCourse()
-//@DeleteMapping("/students/{id}/unenroll/{courseId}") → unenrollStudentFromCourse()
-
 }

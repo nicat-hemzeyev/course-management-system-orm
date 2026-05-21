@@ -28,4 +28,9 @@ public class TeacherEntity {
     @OneToMany(mappedBy = "teacher")
     private List<CourseEntity> course = new ArrayList<>();
     private LocalDateTime createdAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
 }

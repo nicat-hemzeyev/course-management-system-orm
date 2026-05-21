@@ -35,6 +35,7 @@ public class StudentEntity {
     protected void onCreate(){
         createdAt =LocalDateTime.now();
     }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
