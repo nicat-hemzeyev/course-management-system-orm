@@ -33,17 +33,6 @@ public class CourseService {
         CourseEntity courseEntity = CourseMapper.mapToEntity(courseRequest, teacherEntity);
         // 3. Kursu DB-yə save et
         courseRepository.save(courseEntity);
-        // 4. StudentIds əsasında enrollment yarat
-        if (courseRequest.getStudentIds() != null) {
-            for (Long studentId : courseRequest.getStudentIds()) {
-                StudentEntity studentEntity = studentRepository.findById(studentId)
-                        .orElseThrow(() -> new RuntimeException("Student not found: " + studentId));
-                EnrollmentEntity enrollmentEntity = new EnrollmentEntity();
-                enrollmentEntity.setStudent(studentEntity);
-                enrollmentEntity.setCourse(courseEntity);
-                enrollmentRepository.save(enrollmentEntity);
-            }
-        }
         // 5. Response qaytar
         return CourseMapper.mapToResponse(courseEntity);
     }

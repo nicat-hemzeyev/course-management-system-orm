@@ -10,11 +10,10 @@ import org.springframework.context.annotation.Configuration;
         info = @Info(
                 title = "COURSE MANAGEMENT SYSTEM",
                 version = "1.0.0",
-                description = "telebelerin kurslara yazilmasi",
+                description = "Bazardüzü_IT_Kursları",
                 contact =
                 @Contact(
                         name = "Nicat Hemzeyev",
-                        url = "https://youtu.be/XtXaSfbCKRA?si=sAP9n5Lc_VCsWoiO",
                         email = "hemzeyevnicat25@gmail.com"
                 )
 
